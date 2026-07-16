@@ -18,9 +18,8 @@ through one UI. It:
 - Wires each completion through `middleware.RecommendedChat` so the demo
   reflects the production-shape wiring a real service would use.
 
-This module lives under its own `go.mod` so its dependency closure does
-not leak into the main toolkit's. Replace the `replace` directive in
-`go.mod` with a real version pin when copying this out of the monorepo.
+This module has its own `go.mod` and imports the toolkit through a real
+version pin (`v0.7.1`) — no `replace` directive; it builds standalone.
 
 ## Run
 
@@ -79,8 +78,8 @@ listing the env vars it looks for and exits 1.
 
 ## Pinning
 
-This module imports the toolkit via a local `replace` directive so it
-always uses your worktree copy. If you copy this demo elsewhere, drop
-the `replace` and add a real version pin (`go get
-github.com/SnapdragonPartners/maestro-llms@v0.7.0` or whatever is
-current).
+This fixture imports the toolkit through a pinned version
+(`github.com/SnapdragonPartners/maestro-llms v0.7.1`) in `go.mod`.
+As a golden-story fixture the pin moves only by the fixture re-pin
+procedure (see `docs/v2/phase_1/process_fixtures.md` in the maestro
+repo), never casually.
