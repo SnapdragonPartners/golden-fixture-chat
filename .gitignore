@@ -1,3 +1,10 @@
 /bin/
 *.out
 coverage/
+
+# The compiled demo binary. `go build` in the repo root emits an executable
+# named after the module directory; it was committed by accident in the
+# extraction commit (91514c9). Any build regenerates it with different bytes,
+# which made diff-confinement checks unsatisfiable for every story on this
+# fixture that builds.
+/golden-fixture-chat
